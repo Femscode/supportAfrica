@@ -1,0 +1,83 @@
+<DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <head>
+
+    </head>
+</html>
+<script>
+const covid19ImpactEstimator = (data) => data;
+// export default covid19ImpactEstimator;
+ var input =  {
+    region: {
+        name:"Africa",
+        avgAge:19.7,
+        avgDailyIncomeInUSD:5,
+        avgDailyIncomePopulation:0.71 },
+        periodType:"days",
+        timetoElapse:58,
+        reportedCases:694,
+        population:66622705,
+        totalHospitalBeds:1380614
+    }
+    console.log(input.region.avgAge * input.timetoElapse)
+    var output = {
+        data:{
+          totalHospitalBeds:35,
+          reportedCases:694 
+        },
+        impact:{
+            currentlyInfected : input.reportedCases * 10,
+            // infectionBy30days : output.impact.currentlyInfected *
+            
+               },
+        severalImpact:{
+            currentlyInfected : input.reportedCases * 50,
+            // infectionBy30days : severalImpact.currentlyInfected * 1024
+        }
+    }   
+    //chalenge 2
+    output.impact.infectionBy30days = output.impact.currentlyInfected * 1024
+    output.severalImpact.infectionBy30days = output.impact.currentlyInfected * 1024
+    output.severalImpact.severalCasesBy30days = Math.floor((15/100) * output.severalImpact.infectionBy30days)
+    console.log(output.severalImpact.severalCasesBy30days)
+    // output.severalImpact.hospitalBedsAvailable = (3  5/100) * input.totalHospitalBeds
+    output.severalImpact.hospitalBedsRequired = Math.floor((35 / 100) * output.severalImpact.severalCasesBy30days)
+    output.severalImpact.hospitalBedsBy30days = output.severalImpact.hospitalBedsRequired - input.totalHospitalBeds
+    //challenge 3
+    output.severalImpact.casesForICUBy30days = Math.floor((5/100) * output.severalImpact.infectionBy30days)
+    output.severalImpact.casesForVentilatorsBy30days = Math.floor((2/100) * output.severalImpact.infectionBy30days)
+    output.severalImpact.dollarsInFlight =Math.floor(output.severalImpact.infectionBy30days * 0.65 * 1.5 * 30)
+    console.log(output.severalImpact.dollarsInFlight)
+    console.log(output.severalImpact.hospitalBedsBy30days)
+    console.log(output.severalImpact)
+</script>
+<form>
+    <div class='inside'>
+       <h1> A Novelty COVID-19 infections estimator</h1>
+    </div>
+    <div class='inside'>
+        Population:<br>
+    <input class='input' type='number' name='population' id='data-population'></div><br> 
+    <div class='inside'>
+        Time to Elapse<br>
+    <input type='number' name='timetoElapse' id='data-time-to-elapse'></div><br>
+    <div class='inside'>
+        Reported Cases<br>
+    <input type='number' name='reportedCases' id='data-reported-cases'></div><br>
+    <div class='inside'>
+        Total Hospital Beds<br>
+    <input type='number' name='totalHospitalBeds' id='data-total-hospital-beds'></div><br>
+    <div class='inside'>
+        Select the Period Type<br>
+    <select name='periodType' id='data-period-type'>
+        <option value='days'>Days</option>
+        <option value='weeks'>Weeks</option>
+        <option value='months'>Months</option></select></div><br>
+        <div class='inside'>
+    <input class='submit' type='submit' id='data-go-estimate'></div><br>
+<div class='inside'>
+    <h1>This is where all the output falls</h1>
+</div>
+</form>

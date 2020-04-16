@@ -1,0 +1,40 @@
+<DOCTYPE html>
+    <html>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <head>
+    
+        </head>
+    </html>
+    <form> 
+        <div class='inside'>
+           <h1> A Novelty COVID-19 infections estimator</h1>
+        </div>
+        <div class='inside'>
+            Population:<br>
+        <input class='input' type='number' name='population' id='data-population'></div><br> 
+        <div class='inside'>
+            Time to Elapse<br>
+        <input type='number' name='timetoElapse' id='data-time-to-elapse'></div><br>
+        <div class='inside'>
+            Reported Cases<br>
+        <input type='number' name='reportedCases' id='data-reported-cases'></div><br>
+        <div class='inside'>
+            Total Hospital Beds<br>
+        <input type='number' name='totalHospitalBeds' id='data-total-hospital-beds'></div><br>
+        <div class='inside'>
+            
+            Select the Period Type<br>
+        <select name='periodType' id='data-period-type'>
+            <option value='days'>Days</option>
+            <option value='weeks'>Weeks</option>
+            <option value='months'>Months</option></select></div>   
+            <!-- <div class='inside'> -->
+        <button class='submit' id='data-go-estimate' type='submit' onclick='datagoestimate();'>Submit</button>    
+    <!-- </div> -->
+    <br>
+    <div class='inside' style='visibility: hidden' id='show'>
+        <h1 id='show'></h1>
+    </div>
+    </form>
+    <script src="estimator.js"></script>
+       
